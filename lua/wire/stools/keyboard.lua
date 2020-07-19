@@ -1,4 +1,4 @@
-WireToolSetup.setCategory( "Input, Output/Keyboard Interaction", "Vehicle Control" )
+WireToolSetup.setCategory( "Input, Output/Keyboard Interaction" )
 WireToolSetup.open( "keyboard", "Keyboard", "gmod_wire_keyboard", nil, "Keyboards" )
 
 if ( CLIENT ) then

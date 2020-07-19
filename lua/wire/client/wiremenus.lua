@@ -4,11 +4,7 @@ local Categories = {
 	"Visuals",
 	"Detection",
 	"Input, Output",
-	"Vehicle Control",
-	"Physics",
 	"Other",
-	"Memory",
-	"Advanced",
 	"Tools",
 	"Options",
 }
