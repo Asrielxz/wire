@@ -1,4 +1,4 @@
---[[
+﻿--[[
 		Trig Gates
 ]]
 GateActions("Trig")
@@ -15,134 +15,134 @@ local AngleDifference = math.AngleDifference
 local atan2 = math.atan2
 
 GateActions["quadratic"] = {
-	name = "Quadratic Formula",
-	inputs = {"A", "B", "C"},
-	outputs = {"Pos", "Neg"},
-	output = function(gate, A, B, C)
-		local temp = sqrt(B ^ 2 - 4 * A * C)
+    name = "Quadratic Formula",
+    inputs = {"A", "B", "C"},
+    outputs = {"Pos", "Neg"},
+    output = function(gate, A, B, C)
+        local temp = sqrt(B ^ 2 - 4 * A * C)
 
-		return (-B + temp) / (2 * A), (-B - temp) / (2 * A)
-	end,
-	label = function(Out, A, B, C) return ("AX^2 + BX + C\n(-%s +/- sqrt(%s^2 - 4*%s*%s)) / (2*%s) = %s,%s"):format(B, B, A, C, A, Out.Pos, Out.Neg) end
+        return (-B + temp) / (2 * A), (-B - temp) / (2 * A)
+    end,
+    label = function(Out, A, B, C) return ("AX^2 + BX + C\n(-%s +/- sqrt(%s^2 - 4*%s*%s)) / (2*%s) = %s,%s"):format(B, B, A, C, A, Out.Pos, Out.Neg) end
 }
 
 GateActions["sin"] = {
-	name = "Sin(Rad)",
-	inputs = {"A"},
-	output = function(gate, A) return sin(A) end,
-	label = function(Out, A) return "sin(" .. A .. "rad) = " .. Out end
+    name = "Sin(Rad)",
+    inputs = {"A"},
+    output = function(gate, A) return sin(A) end,
+    label = function(Out, A) return "sin(" .. A .. "rad) = " .. Out end
 }
 
 GateActions["cos"] = {
-	name = "Cos(Rad)",
-	inputs = {"A"},
-	output = function(gate, A) return cos(A) end,
-	label = function(Out, A) return "cos(" .. A .. "rad) = " .. Out end
+    name = "Cos(Rad)",
+    inputs = {"A"},
+    output = function(gate, A) return cos(A) end,
+    label = function(Out, A) return "cos(" .. A .. "rad) = " .. Out end
 }
 
 GateActions["tan"] = {
-	name = "Tan(Rad)",
-	inputs = {"A"},
-	output = function(gate, A) return tan(A) end,
-	label = function(Out, A) return "tan(" .. A .. "rad) = " .. Out end
+    name = "Tan(Rad)",
+    inputs = {"A"},
+    output = function(gate, A) return tan(A) end,
+    label = function(Out, A) return "tan(" .. A .. "rad) = " .. Out end
 }
 
 GateActions["asin"] = {
-	name = "Asin(Rad)",
-	inputs = {"A"},
-	output = function(gate, A) return asin(A) end,
-	label = function(Out, A) return "asin(" .. A .. ") = " .. Out .. "rad" end
+    name = "Asin(Rad)",
+    inputs = {"A"},
+    output = function(gate, A) return asin(A) end,
+    label = function(Out, A) return "asin(" .. A .. ") = " .. Out .. "rad" end
 }
 
 GateActions["acos"] = {
-	name = "Acos(Rad)",
-	inputs = {"A"},
-	output = function(gate, A) return acos(A) end,
-	label = function(Out, A) return "acos(" .. A .. ") = " .. Out .. "rad" end
+    name = "Acos(Rad)",
+    inputs = {"A"},
+    output = function(gate, A) return acos(A) end,
+    label = function(Out, A) return "acos(" .. A .. ") = " .. Out .. "rad" end
 }
 
 GateActions["atan"] = {
-	name = "Atan(Rad)",
-	inputs = {"A"},
-	output = function(gate, A) return atan(A) end,
-	label = function(Out, A) return "atan(" .. A .. ") = " .. Out .. "rad" end
+    name = "Atan(Rad)",
+    inputs = {"A"},
+    output = function(gate, A) return atan(A) end,
+    label = function(Out, A) return "atan(" .. A .. ") = " .. Out .. "rad" end
 }
 
 GateActions["sin_d"] = {
-	name = "Sin(Deg)",
-	inputs = {"A"},
-	output = function(gate, A) return sin(rad(A)) end,
-	label = function(Out, A) return "sin(" .. A .. "deg) = " .. Out end
+    name = "Sin(Deg)",
+    inputs = {"A"},
+    output = function(gate, A) return sin(rad(A)) end,
+    label = function(Out, A) return "sin(" .. A .. "deg) = " .. Out end
 }
 
 GateActions["cos_d"] = {
-	name = "Cos(Deg)",
-	inputs = {"A"},
-	output = function(gate, A) return cos(rad(A)) end,
-	label = function(Out, A) return "cos(" .. A .. "deg) = " .. Out end
+    name = "Cos(Deg)",
+    inputs = {"A"},
+    output = function(gate, A) return cos(rad(A)) end,
+    label = function(Out, A) return "cos(" .. A .. "deg) = " .. Out end
 }
 
 GateActions["tan_d"] = {
-	name = "Tan(Deg)",
-	inputs = {"A"},
-	output = function(gate, A) return tan(rad(A)) end,
-	label = function(Out, A) return "tan(" .. A .. "deg) = " .. Out end
+    name = "Tan(Deg)",
+    inputs = {"A"},
+    output = function(gate, A) return tan(rad(A)) end,
+    label = function(Out, A) return "tan(" .. A .. "deg) = " .. Out end
 }
 
 GateActions["asin_d"] = {
-	name = "Asin(Deg)",
-	inputs = {"A"},
-	output = function(gate, A) return deg(asin(A)) end,
-	label = function(Out, A) return "asin(" .. A .. ") = " .. Out .. "deg" end
+    name = "Asin(Deg)",
+    inputs = {"A"},
+    output = function(gate, A) return deg(asin(A)) end,
+    label = function(Out, A) return "asin(" .. A .. ") = " .. Out .. "deg" end
 }
 
 GateActions["acos_d"] = {
-	name = "Acos(Deg)",
-	inputs = {"A"},
-	output = function(gate, A) return deg(acos(A)) end,
-	label = function(Out, A) return "acos(" .. A .. ") = " .. Out .. "deg" end
+    name = "Acos(Deg)",
+    inputs = {"A"},
+    output = function(gate, A) return deg(acos(A)) end,
+    label = function(Out, A) return "acos(" .. A .. ") = " .. Out .. "deg" end
 }
 
 GateActions["atan_d"] = {
-	name = "Atan(Deg)",
-	inputs = {"A"},
-	output = function(gate, A) return deg(atan(A)) end,
-	label = function(Out, A) return "atan(" .. A .. ") = " .. Out .. "deg" end
+    name = "Atan(Deg)",
+    inputs = {"A"},
+    output = function(gate, A) return deg(atan(A)) end,
+    label = function(Out, A) return "atan(" .. A .. ") = " .. Out .. "deg" end
 }
 
 GateActions["rad2deg"] = {
-	name = "Radians to Degrees",
-	inputs = {"A"},
-	output = function(gate, A) return deg(A) end,
-	label = function(Out, A) return A .. "rad = " .. Out .. "deg" end
+    name = "Radians to Degrees",
+    inputs = {"A"},
+    output = function(gate, A) return deg(A) end,
+    label = function(Out, A) return A .. "rad = " .. Out .. "deg" end
 }
 
 GateActions["deg2rad"] = {
-	name = "Degrees to Radians",
-	inputs = {"A"},
-	output = function(gate, A) return rad(A) end,
-	label = function(Out, A) return A .. "deg = " .. Out .. "rad" end
+    name = "Degrees to Radians",
+    inputs = {"A"},
+    output = function(gate, A) return rad(A) end,
+    label = function(Out, A) return A .. "deg = " .. Out .. "rad" end
 }
 
 GateActions["angdiff"] = {
-	name = "Difference(rad)",
-	inputs = {"A", "B"},
-	output = function(gate, A, B) return rad(AngleDifference(deg(A), deg(B))) end,
-	label = function(Out, A, B) return A .. "deg - " .. B .. "deg = " .. Out .. "deg" end
+    name = "Difference(rad)",
+    inputs = {"A", "B"},
+    output = function(gate, A, B) return rad(AngleDifference(deg(A), deg(B))) end,
+    label = function(Out, A, B) return A .. "deg - " .. B .. "deg = " .. Out .. "deg" end
 }
 
 GateActions["angdiff_d"] = {
-	name = "Difference(deg)",
-	inputs = {"A", "B"},
-	output = function(gate, A, B) return AngleDifference(A, B) end,
-	label = function(Out, A, B) return A .. "deg - " .. B .. "deg = " .. Out .. "deg" end
+    name = "Difference(deg)",
+    inputs = {"A", "B"},
+    output = function(gate, A, B) return AngleDifference(A, B) end,
+    label = function(Out, A, B) return A .. "deg - " .. B .. "deg = " .. Out .. "deg" end
 }
 
 GateActions["atan2"] = {
-	name = "Atan2",
-	inputs = {"A", "B"},
-	output = function(gate, A, B) return atan2(A, B) end,
-	label = function(Out, A, B) return "atan2(" .. A .. "," .. B .. ") = " .. Out end
+    name = "Atan2",
+    inputs = {"A", "B"},
+    output = function(gate, A, B) return atan2(A, B) end,
+    label = function(Out, A, B) return "atan2(" .. A .. "," .. B .. ") = " .. Out end
 }
 
 GateActions()
