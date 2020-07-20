@@ -120,6 +120,12 @@ if CLIENT then
         self.layouter = MakeTextScreenLayouter()
         self:CreateFont(self.tfont, self.chrPerLine)
         WireLib.netRegister(self)
+
+        timer.Simple(1, function()
+            if not IsValid(self) then return end
+
+            self.NeedRefresh = true
+        end)
     end
 
     function ENT:OnRemove()

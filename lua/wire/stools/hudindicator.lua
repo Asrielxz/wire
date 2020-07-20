@@ -209,13 +209,13 @@ function TOOL:Think()
 
                 if currentcheck ~= self.LastRegisterCheck then
                     self.LastRegisterCheck = currentcheck
-                    self:GetWeapon():SetNWBool("HUDIndicatorCheckRegister", currentcheck)
+                    self:GetWeapon():SetNW2Bool("HUDIndicatorCheckRegister", currentcheck)
                 end
             else
                 if (self.LastRegisterCheck == true) then
                     -- Don't need to set this every 1/10 of a second
                     self.LastRegisterCheck = false
-                    self:GetWeapon():SetNWBool("HUDIndicatorCheckRegister", false)
+                    self:GetWeapon():SetNW2Bool("HUDIndicatorCheckRegister", false)
                 end
             end
 
@@ -226,7 +226,7 @@ end
 
 if (CLIENT) then
     function TOOL:DrawHUD()
-        local isregistered = self:GetWeapon():GetNWBool("HUDIndicatorCheckRegister")
+        local isregistered = self:GetWeapon():GetNW2Bool("HUDIndicatorCheckRegister")
 
         if (isregistered) then
             draw.WordBox(8, ScrW() / 2 + 10, ScrH() / 2 + 10, "Registered", "Default", Color(50, 50, 75, 192), Color(255, 255, 255, 255))
@@ -236,7 +236,7 @@ end
 
 function TOOL:Holster()
     self:ReleaseGhostEntity()
-    self:GetWeapon():SetNWBool("HUDIndicatorCheckRegister", false)
+    self:GetWeapon():SetNW2Bool("HUDIndicatorCheckRegister", false)
 end
 
 function TOOL.BuildCPanel(panel)

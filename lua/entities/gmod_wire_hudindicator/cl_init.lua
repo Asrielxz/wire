@@ -21,7 +21,7 @@ function ENT:ClientCheckRegister()
     local ply = LocalPlayer()
     local plyuid = ply:UniqueID()
 
-    return ply ~= self:GetPlayer() and not self:GetNWBool(plyuid)
+    return ply ~= self:GetPlayer() and not self:GetNW2Bool(plyuid)
 end
 
 -- Used by STool for unregister control panel

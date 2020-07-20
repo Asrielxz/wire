@@ -600,6 +600,7 @@ if SERVER then
     function WireLib._SetInputs(ent, lqueue)
         local queue = lqueue or queue
         local eid = ent:EntIndex()
+        ent.CanUpdate = true
 
         if not ents_with_inputs[eid] then
             ents_with_inputs[eid] = {}
@@ -621,6 +622,7 @@ if SERVER then
     function WireLib._SetOutputs(ent, lqueue)
         local queue = lqueue or queue
         local eid = ent:EntIndex()
+        ent.CanUpdate = true
 
         if not ents_with_outputs[eid] then
             ents_with_outputs[eid] = {}
@@ -641,6 +643,7 @@ if SERVER then
         local state = input.SrcId and true or false
         local queue = lqueue or queue
         local eid = ent:EntIndex()
+        ent.CanUpdate = true
         queue[#queue + 1] = {eid, LINK, num, state}
     end
 

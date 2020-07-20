@@ -370,11 +370,11 @@ elseif CLIENT then
 
     function TOOL:Holster()
         if IsValid(self.CurrentEntity) then
-            self.CurrentEntity:SetNWString("BlinkWire", "")
+            self.CurrentEntity:SetNW2String("BlinkWire", "")
         end
 
         if IsValid(self.AimingEnt) then
-            self.AimingEnt:SetNWString("BlinkWire", "")
+            self.AimingEnt:SetNW2String("BlinkWire", "")
         end
 
         self.CurrentEntity = nil
@@ -788,7 +788,7 @@ elseif CLIENT then
             end
 
             if oldport ~= self.CurrentWireIndex then
-                ent:SetNWString("BlinkWire", check[self.CurrentWireIndex][1])
+                ent:SetNW2String("BlinkWire", check[self.CurrentWireIndex][1])
                 self:GetOwner():EmitSound("weapons/pistol/pistol_empty.wav")
             end
 
@@ -897,7 +897,7 @@ elseif CLIENT then
 
             -- Clear blinking wire
             if IsValid(self.AimingEnt) then
-                self.AimingEnt:SetNWString("BlinkWire", "")
+                self.AimingEnt:SetNW2String("BlinkWire", "")
             end
 
             if IsValid(ent) then
@@ -920,7 +920,7 @@ elseif CLIENT then
 
                     -- Set blinking wire
                     if check[self.CurrentWireIndex] then
-                        ent:SetNWString("BlinkWire", check[self.CurrentWireIndex][1])
+                        ent:SetNW2String("BlinkWire", check[self.CurrentWireIndex][1])
                     end
                 end
             end

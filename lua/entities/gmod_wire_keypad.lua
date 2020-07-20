@@ -84,7 +84,7 @@ if CLIENT then
             draw.DrawText(text, "Trebuchet18", textx, texty, Color(0, 0, 0, 255))
         end
 
-        local Display = self:GetNWString("keypad_display", "")
+        local Display = self:GetNW2String("keypad_display", "")
 
         if Display == "y" then
             draw.DrawText("ACCESS", "Trebuchet24", X + 17, Y + 7, Color(0, 255, 0, 255))
@@ -165,7 +165,7 @@ net.Receive("wire_keypad", function(netlen, ply)
 
     -- Reset
     if key == 10 then
-        ent:SetNWString("keypad_display", "")
+        ent:SetNW2String("keypad_display", "")
         ent:EmitSound("buttons/button14.wav")
         ent.CurrentNum = 0
     elseif key == 11 or ent.CurrentNum > 999 then
@@ -173,11 +173,11 @@ net.Receive("wire_keypad", function(netlen, ply)
         local access = (ent.Password == util.CRC(ent.CurrentNum))
 
         if access then
-            ent:SetNWString("keypad_display", "y")
+            ent:SetNW2String("keypad_display", "y")
             Wire_TriggerOutput(ent, "Valid", 1)
             ent:EmitSound("buttons/button9.wav")
         else
-            ent:SetNWString("keypad_display", "n")
+            ent:SetNW2String("keypad_display", "n")
             Wire_TriggerOutput(ent, "Invalid", 1)
             ent:EmitSound("buttons/button8.wav")
         end
@@ -186,7 +186,7 @@ net.Receive("wire_keypad", function(netlen, ply)
 
         timer.Create("wire_keypad_" .. ent:EntIndex() .. "_" .. tostring(access), 2, 1, function()
             if IsValid(ent) then
-                ent:SetNWString("keypad_display", "")
+                ent:SetNW2String("keypad_display", "")
                 ent.CurrentNum = 0
 
                 if access then
@@ -200,9 +200,9 @@ net.Receive("wire_keypad", function(netlen, ply)
         ent.CurrentNum = ent.CurrentNum * 10 + key
 
         if ent.Secure then
-            ent:SetNWString("keypad_display", string.rep("*", string.len(ent.CurrentNum)))
+            ent:SetNW2String("keypad_display", string.rep("*", string.len(ent.CurrentNum)))
         else
-            ent:SetNWString("keypad_display", tostring(ent.CurrentNum))
+            ent:SetNW2String("keypad_display", tostring(ent.CurrentNum))
         end
 
         ent:EmitSound("buttons/button15.wav")

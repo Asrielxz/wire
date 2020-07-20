@@ -73,13 +73,40 @@ WireLib.DT = {
     },
     -- Numbers
     VECTOR = {
-        Zero = Vector(0, 0, 0)
+        Zero = vector_origin
+    },
+    RANGER = {
+        Zero = {
+            Entity = NULL,
+            Fraction = 1,
+            FractionLeftSolid = 0,
+            Hit = false,
+            HitBox = 0,
+            HitGroup = 0,
+            HitNoDraw = false,
+            HitNonWorld = false,
+            HitNormal = vector_origin,
+            HitPos = vector_origin,
+            HitSky = false,
+            HitTexture = "** empty **",
+            HitWorld = false,
+            MatType = 0,
+            Normal = vector_origin,
+            PhysicsBone = 0,
+            StartPos = vector_origin,
+            SurfaceProps = 0,
+            StartSolid = false,
+            AllSolid = false,
+            SurfaceFlags = 0,
+            DispFlags = 0,
+            CONTENTS = 0
+        }
     },
     ANGLE = {
-        Zero = Angle(0, 0, 0)
+        Zero = angle_zero
     },
     COLOR = {
-        Zero = Color(0, 0, 0)
+        Zero = color_black
     },
     ENTITY = {
         Zero = NULL
@@ -134,7 +161,7 @@ function WireLib.CreateSpecialInputs(ent, names, types, descs)
             Type = tp,
             Value = WireLib.DT[tp].Zero,
             Material = "tripmine_laser",
-            Color = Color(255, 255, 255, 255),
+            Color = color_white,
             Width = 1,
             Num = n
         }
@@ -220,7 +247,7 @@ function WireLib.AdjustSpecialInputs(ent, names, types, descs)
                 Type = tp,
                 Value = WireLib.DT[tp].Zero,
                 Material = "tripmine_laser",
-                Color = Color(255, 255, 255, 255),
+                Color = color_white,
                 Width = 1,
                 Keep = true,
                 Num = n
@@ -372,15 +399,15 @@ function WireLib.Restored(ent, force_outputs)
             port.Entity = ent
             port.Type = port.Type or "NORMAL"
             port.Material = port.Material or "cable/blue_elec"
-            port.Color = port.Color or Color(255, 255, 255, 255)
+            port.Color = port.Color or color_white
             port.Width = port.Width or 2
-            port.StartPos = port.StartPos or Vector(0, 0, 0)
+            port.StartPos = port.StartPos or vector_origin
 
             if (port.Src) and (not port.Path) then
                 port.Path = {
                     {
                         Entity = port.Src,
-                        Pos = Vector(0, 0, 0)
+                        Pos = vector_origin
                     }
                 }
             end
@@ -704,7 +731,7 @@ function WireLib.Link_End(idx, ent, pos, oname, pl)
         return
     end
 
-    --Msg("input type= " .. input.Type .. "  output type= " .. (output.Type or "NIL") .. "\n")	-- I bet that was getting anoying (TAD2020)
+    --Msg("input type= " .. input.Type .. "  output type= " .. (output.Type or "NIL") .. "\n")  -- I bet that was getting anoying (TAD2020)
     if (input.Type ~= output.Type) and (input.Type ~= "ANY") and (output.Type ~= "ANY") then
         local text = "Data Type Mismatch! Input takes " .. input.Type .. " and Output gives " .. output.Type
         MsgN(text)
@@ -847,7 +874,7 @@ function WireLib.BuildDupeInfo(Ent)
                 Width = input.Width,
                 Src = input.Src:EntIndex(),
                 SrcId = input.SrcId,
-                SrcPos = Vector(0, 0, 0)
+                SrcPos = vector_origin
             }
 
             if (input.Path) then
@@ -1042,7 +1069,7 @@ hook.Add("InitPostEntity", "antiantinoclip", function()
 
     ENT.speed = 20
     ENT.lastt = 0
-    ENT.oldpos = Vector(0, 0, 0)
+    ENT.oldpos = vector_origin
 end)
 
 function getOwner(entity)

@@ -50,7 +50,7 @@ function ENT:Setup(range, default_zero, show_beam, ignore_world, trace_water, ou
         self:SetShowBeam(show_beam)
     end
 
-    self:SetNWBool("TraceWater", trace_water)
+    self:SetNW2Bool("TraceWater", trace_water)
     local onames, otypes = {}, {}
 
     local function add(...)
@@ -104,8 +104,8 @@ function ENT:Setup(range, default_zero, show_beam, ignore_world, trace_water, ou
 
     add("RangerData", "RANGER")
     WireLib.AdjustSpecialOutputs(self, onames, otypes)
-    self:TriggerOutput(0, Vector(0, 0, 0), Vector(0, 0, 0), Angle(0, 0, 0), Color(255, 255, 255, 255), nil, 0, 0, NULL, Vector(0, 0, 0), nil)
-    self:ShowOutput(0, Vector(0, 0, 0), Vector(0, 0, 0), Angle(0, 0, 0), Color(255, 255, 255, 255), nil, 0, 0, NULL, Vector(0, 0, 0), nil)
+    self:TriggerOutput(0, vector_origin, vector_origin, angle_zero, color_white, nil, 0, 0, NULL, vector_origin, nil)
+    self:ShowOutput(0, vector_origin, vector_origin, angle_zero, color_white, nil, 0, 0, NULL, vector_origin, nil)
 end
 
 function ENT:TriggerInput(iname, value)
@@ -143,15 +143,15 @@ function ENT:Think()
     local trace = util.TraceLine(tracedata)
     trace.RealStartPos = tracedata.start
     local dist = 0
-    local pos = Vector(0, 0, 0)
-    local vel = Vector(0, 0, 0)
-    local ang = Angle(0, 0, 0)
-    local col = Color(255, 255, 255, 255)
+    local pos = vector_origin
+    local vel = vector_origin
+    local ang = angle_zero
+    local col = color_white
     local ent = NULL
     local sid = ""
     local uid = 0
     local val = {}
-    local hnrm = Vector(0, 0, 0)
+    local hnrm = vector_origin
 
     if (trace.Hit) then
         dist = trace.Fraction * self:GetBeamLength()
@@ -187,7 +187,7 @@ function ENT:Think()
                     dist = self:GetBeamLength()
                 end
 
-                pos = Vector(0, 0, 0)
+                pos = vector_origin
             end
         end
     else

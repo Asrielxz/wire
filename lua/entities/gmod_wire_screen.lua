@@ -86,19 +86,23 @@ function ENT:SetupDataTables()
 end
 
 function ENT:SetDisplayA(float)
-    self:SetNWFloat("DisplayA", float)
+    if self:GetNW2Float("DisplayA") ~= float then
+        self:SetNW2Float("DisplayA", float)
+    end
 end
 
 function ENT:SetDisplayB(float)
-    self:SetNWFloat("DisplayB", float)
+    if self:GetNW2Float("DisplayB") ~= float then
+        self:SetNW2Float("DisplayB", float)
+    end
 end
 
 function ENT:GetDisplayA()
-    return self:GetNWFloat("DisplayA")
+    return self:GetNW2Float("DisplayA")
 end
 
 function ENT:GetDisplayB()
-    return self:GetNWFloat("DisplayB")
+    return self:GetNW2Float("DisplayB")
 end
 
 if CLIENT then
@@ -166,6 +170,9 @@ if CLIENT then
         self:DrawModel()
 
         self.GPU:RenderToWorld(nil, 188, function(x, y, w, h)
+            surface.SetDrawColor(background_color)
+            surface.DrawRect(x, y, w, h)
+
             if self:GetSingleValue() then
                 self:DrawNumber(self:GetTextA(), self:GetDisplayA(), x, y, w, h)
             else

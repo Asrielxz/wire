@@ -193,7 +193,7 @@ function MakeWire7Seg(pl, Pos, Ang, Model, a, ar, ag, ab, aa, b, br, bg, bb, ba)
         }, a, ar, ag, ab, aa, b, br, bg, bb, ba)
 
         if IsValid(ent) then
-            ent:SetNWString("WireName", name)
+            ent:SetNW2String("WireName", name)
 
             duplicator.StoreEntityModifier(ent, "WireName", {
                 name = name

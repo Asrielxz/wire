@@ -86,11 +86,11 @@ function ENT:HUDSetup(showinhud, huddesc, hudaddname, hudshowvalue, hudstyle, al
 
         -- Add name if desired
         if (hudaddname) then
-            self:SetNWString("WireName", huddesc)
-        elseif (self:GetNWString("WireName") == huddesc) then
+            self:SetNW2String("WireName", huddesc)
+        elseif (self:GetNW2String("WireName") == huddesc) then
             -- Only remove it if the HUD Description was there
             -- because there might be another name on it
-            self:SetNWString("WireName", "")
+            self:SetNW2String("WireName", "")
         end
     end
 
@@ -171,7 +171,7 @@ function ENT:RegisterPlayer(ply, hookhidehud, podonly)
         }
 
         -- This is used to check for pod-only status in ClientCheckRegister()
-        self:SetNWBool(plyuid, util.tobool(podonly))
+        self:SetNW2Bool(plyuid, util.tobool(podonly))
     end
 
     umsg.Start("HUDIndicatorRegister", ply)

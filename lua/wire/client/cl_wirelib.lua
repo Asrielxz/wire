@@ -53,7 +53,7 @@ function Wire_Render(ent)
                     lastrender = t
                 end
 
-                local blink = shouldblink and ent:GetNWString("BlinkWire")
+                local blink = shouldblink and ent:GetNW2String("BlinkWire")
 
                 for net_name, wiretbl in pairs(wires) do
                     local width = wiretbl.Width
@@ -244,7 +244,7 @@ function Wire_DrawTracerBeam(ent, beam_num, hilight, beam_length)
         trace.endpos = ent.endpos
         trace.filter = {ent}
 
-        if ent:GetNWBool("TraceWater") then
+        if ent:GetNW2Bool("TraceWater") then
             trace.mask = MASK_ALL
         end
 
