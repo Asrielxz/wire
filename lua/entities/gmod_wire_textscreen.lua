@@ -120,12 +120,6 @@ if CLIENT then
         self.layouter = MakeTextScreenLayouter()
         self:CreateFont(self.tfont, self.chrPerLine)
         WireLib.netRegister(self)
-
-        timer.Simple(1, function()
-            if not IsValid(self) then return end
-
-            self.NeedRefresh = true
-        end)
     end
 
     function ENT:OnRemove()
@@ -152,16 +146,16 @@ if CLIENT then
 
         self.GPU:Render()
         --[[
-		self.GPU:RenderToWorld(512, nil, function(x, y, w, h)
+        self.GPU:RenderToWorld(512, nil, function(x, y, w, h)
 
-			surface.SetDrawColor(self.bgcolor.r, self.bgcolor.g, self.bgcolor.b, 255)
-			surface.DrawRect(x, y, w, h)
+            surface.SetDrawColor(self.bgcolor.r, self.bgcolor.g, self.bgcolor.b, 255)
+            surface.DrawRect(x, y, w, h)
 
-			surface.SetFont("textScreenfont"..self.chrPerLine)
-			surface.SetTextColor(self.fgcolor)
-			self.layouter:DrawText(self.text, x, y, w, h, self.textJust, self.valign)
-		end)
-		]]
+            surface.SetFont("textScreenfont"..self.chrPerLine)
+            surface.SetTextColor(self.fgcolor)
+            self.layouter:DrawText(self.text, x, y, w, h, self.textJust, self.valign)
+        end)
+        ]]
         Wire_Render(self)
     end
 

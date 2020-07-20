@@ -299,11 +299,11 @@ if CLIENT then
         -- generate vertex data
         local vertices = {
             --[[
-			Vector(x  , y  ),
-			Vector(x+w, y  ),
-			Vector(x+w, y+h),
-			Vector(x  , y+h),
-			]]
+            Vector(x  , y  ),
+            Vector(x+w, y  ),
+            Vector(x+w, y+h),
+            Vector(x  , y+h),
+            ]]
             {
                 x = x,
                 y = y
@@ -360,12 +360,14 @@ if CLIENT then
         render.SetRenderTarget(NewRT)
         render.SetViewPort(0, 0, 512, 512)
         cam.Start2D()
+        render.SuppressEngineLighting(true)
         local ok, err = xpcall(renderfunction, debug.traceback)
 
         if not ok then
             WireLib.ErrorNoHalt(err)
         end
 
+        render.SuppressEngineLighting(false)
         cam.End2D()
         render.SetViewPort(0, 0, oldw, oldh)
         render.SetRenderTarget(OldRT)

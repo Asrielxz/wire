@@ -5,7 +5,7 @@ if CLIENT then
     language.Add("tool." .. TOOL.Mode .. ".name", TOOL.Name .. " Tool (Wire)")
     language.Add("tool." .. TOOL.Mode .. ".desc", "Spawns a " .. TOOL.Name)
     language.Add("tool." .. TOOL.Mode .. ".password", "Password: ")
-    language.Add("tool." .. TOOL.Mode .. ".secure", "Display Asterisks: ")
+    language.Add("tool." .. TOOL.Mode .. ".secure", "Secure Mode")
 
     TOOL.Information = {
         {
@@ -20,7 +20,7 @@ WireToolSetup.SetupMax(10)
 
 if SERVER then
     function TOOL:GetConVars()
-        return util.CRC(self:GetClientInfo("password")), self:GetClientNumber("secure") ~= 0
+        return self:GetClientInfo("password"), self:GetClientNumber("secure") ~= 0
     end
 
     function TOOL:CheckPassword()
